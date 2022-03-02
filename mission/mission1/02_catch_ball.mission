@@ -1,0 +1,4 @@
+bal=0, vel=0.0:time=0.5
+servo=2, pservo=0:time=1
+servo=2, pservo=200, vservo=2:time=1
+bal=1,vel=0.0:time=0.5
