@@ -1,0 +1,13 @@
+vel=0.2, edgel=-1 ,white=1:dist=1.0
+vel=0.0:time=1
+vel=0.2, white=0: dist=0.7
+vel=0.2, tr=0.1:turn=-90 
+vel=0.0:time=0.5
+label=2,vel=0.2:dist=0.2
+vel=0.3:xl>16
+vel=0.0:time=0.3
+goto=2:count=1
+tr=0.1,vel=0.2:turn=-95
+vel=0.2,head=-20:lv>0
+vel=0.3,edgel=0, white=1: dist=2.5
+vel=0
