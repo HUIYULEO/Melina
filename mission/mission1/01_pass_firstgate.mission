@@ -1,8 +1,8 @@
 vel=0, log=10:time=0.2
+servo=2,pservo=600:time=1
 vel=0.4, acc=2, edgel=-1, white=1:dist=6
 vel=0.0:time=0.5
-vel=0.3, acc=2, edgel=-1, white=1:dist=2.5
+vel=0.4, acc=2, edgel=-1, white=1:dist=2.5
 vel=0.2, edgel=0, white=1:xl>16
 vel=0.2, tr=0.1:turn=100
 vel=0.2, edgel=-1, white=1:dist=1.1
-vel=0:time=1

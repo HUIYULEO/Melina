@@ -378,8 +378,16 @@ bool UMission::mission1(int & state)
       break;
     case 1:
       if (bridge->joy->button[BUTTON_GREEN])
-        state = 10;
+        bridge->event->setEvent(2)
+        state = 2;
       break;
+    case 2:
+      if(bridge->event->isEventSet(2)){
+        loader->loadMission("01_pass_firstgate.mission", lines, &linecount);
+        bridge->event->isEventSet(3);
+        sendAndActivateSnippet(lines, linecount);
+        state++;
+      }
     case 10: // first PART - wait for IR2 then go fwd and turn
       snprintf(lines[0], MAX_LEN, "vel=0 : ir2 < 0.3");
       // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
