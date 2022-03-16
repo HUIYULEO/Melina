@@ -12,40 +12,55 @@
     vel=0.2, edgel=0, white=1:dist=1.1
 
     move to the circle platform   
-    vel=0.3, edgel=0, white=1:xl>16
-    vel=0.2, tr=0.1:turn=95
-    vel=0.2, edgel=0, white=1:dist=0.7
-    vel=0:ir2<0.6
-    vel=0.0:time=3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-    vel=0.2,acc=1,edgel=0,white=1:xl>16
-    tr=0.1,vel=0.4, white=0:turn=65
-    vel=0.6,acc=2, white=0:dist=0.8
+    vel=0.3,edgel=0,white=1:dist=1
+    vel=0.2:xl>16
+    vel=0.2,tr=0.1:turn=95
+    vel=0.2,edgel=0,white=1:dist=0.7
+    vel=0:ir2<1
+    vel=0.0:time=3
+    vel=0.2,acc=1,edgel=0,white=1:time=1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    vel=0.2,edgel=0,white=1:xl>16
+    tr=0.1,vel=0.2, white=0:turn=65
+    vel=0.5,acc=2, white=0:dist=0.7
     vel=0
 
 
     move in a circle and pass three gates
-thread=1    
-    vel=0.3,tr=0.1:turn=60
-    vel=0.2,tr=0.3:turn=-30 
-    :ir1<0.2
-    vel=0.3,tr=0.3:dist=2 # maybe delete
-    event=2
+thread=1
+    vel=0:ir2<1
+    vel=0.0:time=3
+    vel=0.2,acc=1,edgel=0,white=1:time=1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    vel=0.2,edgel=0,white=1:xl>16
+    tr=0.1,vel=0.2, white=0:turn=65
+    vel=0.5,acc=1, white=0:dist=0.7
+    vel=0:time=1
+    vel=0.3,tr=0.1:turn=50
+    vel=0.3,tr=0.45:turn=-180 
+    vel=0.3,tr=0.45:turn=-180
+    vel=0
 
-thread=2
-   :event=2
-   vel=0.3,tr=0.3:time=10
-   vel=0
-   vel=0.2,tr=0.1:turn=90
-   vel=0:ir2<0.6
-   vel=0:time=4
-   vel=0.2,acc=1,white=0:lv>0
-   vel=0.2,tr=0.1:turn=95
-   vel=0.3,edgel=0,white=1:xl>16
-   vel=0.3,tr=0.2:turn=100
-   vel=0.3,edgel=0,white=1:dist=1
-
-   vel=0.2,acc=1,white=0:lv>0
-   vel=0.2,tr=0.1:turn=-95
-   vel=0.3,edgel=0,white=1:xl>16
-   vel=0.3,tr=0.2:turn=100
-   vel=0.3,edgel=0,white=1:dist=1
+    whole test
+    thread=1
+    vel=0.2,edgel=1,white=1:time=1
+    vel=0:ir2<0.7
+    vel=0.0:time=4
+    vel=0.2,acc=1,edgel=0,white=1:time=1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    vel=0.2,edgel=0,white=1:xl>16
+    tr=0.1,vel=0.2, white=0:turn=65
+    vel=0.5,acc=1, white=0:dist=0.65
+    vel=0:time=1
+    vel=0.3,tr=0.1:turn=50
+    vel=0.3,acc=1,tr=0.45:turn=-180 
+    vel=0.3,tr=0.4:turn=-180
+    vel=0.0:time=3
+    vel=0.2,tr=0.1:turn=50
+    vel=0:ir2<1.0
+    vel=0:time=3
+    vel=0.2,acc=1:lv>0
+    vel=0.2,tr=0.1:turn=-100
+    vel=0.2:time=1
+    vel=0.3,edger=1,white=1:dist=1
+    vel=0.4,edger=1,white=1:xl>16
+    vel=0.3,tr=0.2:turn=150
+    vel=0.3,edgel=0,white=1:dist=1.2
+    vel=0
