@@ -13,3 +13,31 @@
     tr=0.1,vel=0.2:turn=90
     vel=0.2,head=-20:dist=0.5
     vel=0
+
+
+
+# Got from robot:
+thread=1
+    vel=0.2, edgel=1.0, white=1: time=1.0
+    vel=0.0: ir2<0.7
+    vel=0.0: time=4.0
+    vel=0.2, acc=1.0, edgel=0.0, white=1: time=1.0
+    vel=0.2, edgel=0.0, white=1: xl>16
+    vel=0.2, tr=0.1, white=0: turn=65.0
+    vel=0.5, acc=1.0, white=0: dist=0.65
+    vel=0.0: time=1.0
+    vel=0.3, tr=0.1: turn=55.0
+    vel=0.3, acc=1.0, tr=0.45: turn=-180.0
+    vel=0.3, tr=0.45: turn=-180.0
+    vel=0.0: time=3.0
+    vel=0.2, tr=0.1: turn=50.0
+    vel=0.0: ir2<1.0
+    vel=0.0: time=3.0
+    vel=0.2, acc=1.0: lv>0
+    vel=0.2, tr=0.1: turn=-100.0
+    vel=0.2: time=1.0
+    vel=0.3, edger=1.0, white=1: dist=1.0
+    vel=0.4, edger=1.0, white=1: xl>16
+    vel=0.3, tr=0.2: turn=150.0
+    vel=0.3, edgel=0.0, white=1: dist=1.2
+    vel=0.0

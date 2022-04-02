@@ -26,7 +26,7 @@
 #include "umission.h"
 #include "utime.h"
 #include "ulibpose2pose.h"
-
+#include "uloader.h"
 
 UMission::UMission(UBridge * regbot, UCamera * camera)
 {
@@ -363,6 +363,7 @@ void UMission::runMission()
  * \returns true, when finished. */
 bool UMission::mission1(int & state)
 {
+  loader
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
@@ -383,9 +384,9 @@ bool UMission::mission1(int & state)
       break;
     case 2:
       if(bridge->event->isEventSet(2)){
-        loader->loadMission("01_pass_firstgate.mission", lines, &linecount);
+        loader->loadMission("01_pass_firstgate.mission", lines, &lineCount);
         bridge->event->isEventSet(3);
-        sendAndActivateSnippet(lines, linecount);
+        sendAndActivateSnippet(lines, lineCount);
         state++;
       }
     case 10: // first PART - wait for IR2 then go fwd and turn

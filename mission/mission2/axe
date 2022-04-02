@@ -1,6 +1,15 @@
-thread=1
-        vel=0:time=0.2
-        vel=0.4,acc=2,edgel=-1,white=1:dist<3.47
-	      vel=0:ir2<0.25
-        vel=0:ir2>1
-        vel=1,acc=1,edgel=-1,white=1:dist=6
+    vel=0:time=0.2
+    vel=0.4,acc=2,edgel=0,white=1:dist=1
+    vel=0,edgel=0,white=1:ir2<0.3
+    vel=0,edgel=0,white=1:ir2>1
+    vel=1.5, acc=3.0,edgel=0.0, white=1: dist=2
+    vel=2.5, acc=3.0, edgel=0.0, white=1: dist=7.1
+    vel=0.0
+
+
+    vel=0:time=0.2
+    vel=0.4,acc=2,edgel=0,white=1:dist=1
+    vel=0,edgel=0,white=1:ir2<0.3
+    vel=0,edgel=0,white=1:ir2>1
+    vel=1.5, acc=3.0,edgel=0.0, white=1: dist=2
+    vel=2.5, acc=3.0, edgel=0.0, white=1: dist=7.1

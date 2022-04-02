@@ -112,6 +112,7 @@ public:
   int toMission;
   int mission;
   int missionState;
+  int lineCount;
 private:
   /**
    * Mission parts
