@@ -236,8 +236,6 @@ int main ( int argc,char **argv )
     //
     // the rest is just to allow some command line input
     
-    
-
     //
     sleep(1); // wait a bit to allow connection to bridge
     printf("Press h for help (q for quit)\n");

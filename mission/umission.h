@@ -60,6 +60,7 @@ private:
   char lineBuffer[missionLineMax][MAX_LEN];
   /** an array of pointers to mission lines */
   char * lines[missionLineMax];
+  int lineCount = 0;
   /** logfile for mission state */
   FILE * logMission = NULL;
   
@@ -105,14 +106,20 @@ public:
   /**
    * Print status for mission */
   void printStatus();
-  
+  /**
+   * set lines 
+   */
+  char * setLines(char lineContent[]);
+  char * getLines();
+  int getLineCount();
+  int setLineCount(int count);
+
   /** which missions to run 
    * These values can be set as parameters, when starting the mission */
   int fromMission;
   int toMission;
   int mission;
   int missionState;
-  int lineCount;
 private:
   /**
    * Mission parts

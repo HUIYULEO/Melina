@@ -363,8 +363,9 @@ void UMission::runMission()
  * \returns true, when finished. */
 bool UMission::mission1(int & state)
 {
-  loader
+  ULoader loader;
   bool finished = false;
+  char lineBuffer_copy[missionLineMax][MAX_LEN];
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
   switch (state)
@@ -384,7 +385,11 @@ bool UMission::mission1(int & state)
       break;
     case 2:
       if(bridge->event->isEventSet(2)){
-        loader->loadMission("01_pass_firstgate.mission", lines, &lineCount);
+        char * lines_copy = getLines;
+        int lineCount_copy = getLineCount;
+        loader->loadMission("01_pass_firstgate.mission", lines_copy, lineBuffer_copy, &lineCount_copy);
+        lines = setLines(lineBuffer_copy);
+        lineCount = setLineCount(lineCount_copy);
         bridge->event->isEventSet(3);
         sendAndActivateSnippet(lines, lineCount);
         state++;
@@ -693,4 +698,27 @@ void UMission::closeLog()
     fclose(logMission);
     logMission = NULL;
   }
+}
+
+char * UMission::setLines(char lineContent[]){
+  int i = 0;
+  for (string line : lineContent){
+    strcpy(lineBuffer[i], line.c_str());
+    lines[i] = lineBuffer[i];
+    lineCount++;
+    i++;
+  }
+  return lines;
+}
+
+char * UMission::getLines(void){
+  return lines;
+}
+
+int UMission::getLineCount(){
+  return lineCount;
+}
+
+int UMission::setLineCount(int count){
+  return lineCount = count;
 }
