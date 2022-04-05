@@ -1,15 +1,29 @@
-vel=0.2, edgel=-1 ,white=1:dist=1.0
-vel=0.0:time=1
-vel=0.2, white=0: dist=0.7
-vel=0.2, tr=0.1:turn=-90 
+vel=0, log=10:time=0.2
+servo=2,pservo=-320,vservo=0
+servo=3,pservo=-130,vservo=0:time=1.0
+vel=0.3, edgel=-1 ,white=1:dist=1.0
+vel=0.3, white=0: dist=0.45
+vel=0.5, tr=0.12:turn=-90 
 vel=0.0:time=0.5
-label=2,vel=0.2:dist=0.2
+label=2,vel=0.3:dist=0.2
 vel=0.3:xl>16
 vel=0.0:time=0.3
 goto=2:count=1
-tr=0.1,vel=0.2:turn=-95
-vel=0.2,head=-20:lv>0
-vel=0.3,edgel=0, white=1: dist=2.5
-vel=0
-
+vel=-0.3:time=1
+tr=0.1,vel=0.5:turn=-100
+vel=0.3:lv>0
+servo=2,pservo=-300,vservo=0
+servo=3,pservo=-120,vservo=0:time=1.0
+vel=0.5,edgel=0, white=1: dist=0.5
+servo=2,pservo=-390,vservo=0
+servo=3,pservo=-130,vservo=0:time=1.0
+vel=0.6,edgel=0, white=1: dist=2.0
+vel=0:time=1
+servo=2,pservo=-290,vservo=0
+servo=3,pservo=-100,vservo=0:time=1.0
+vel=0.3,white=0:dist=0.40
+vel=0.4,tr=0.1:turn=40
+vel=-0.3:time=1.5
+vel=0.35,tr=0.1:turn=-60
+vel=0.0:time=0.5
 
