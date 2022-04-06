@@ -92,11 +92,11 @@ bool UCamera::setupCamera()
   //   w = 1920;
   //   h = 1080;
   //
-  w = 1296;
-  h = 972;
+  // w = 1296;
+  // h = 972;
   //
-  //   w = 640;
-  //   h = 480;
+  w = 640;
+  h = 480;
   //pixelFormat = V4L2_PIX_FMT_YUYV;
   pixelFormat = V4L2_PIX_FMT_SBGGR10;  // (BG10) Bayer coded 10bit per colour plane
   //pixelFormat = V4L2_PIX_FMT_SBGGR10P;

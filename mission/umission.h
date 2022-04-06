@@ -24,6 +24,11 @@
 
 #include <sys/time.h>
 #include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
+#include <stdlib.h>
 #include <opencv2/opencv.hpp>
 #include "urun.h"
 #include "ucamera.h"
@@ -109,10 +114,11 @@ public:
   /**
    * set lines 
    */
-  char * setLines(char lineContent[]);
-  char * getLines();
-  int getLineCount();
-  int setLineCount(int count);
+  // char * setLines(char lineContent[]);
+  // // char * getLines();
+  // int getLineCount();
+  // int setLineCount(int count);
+  void loadMission(string mission_name, char ** lines_copy, char lineBuffer_copy[][100],  int *lineCount);
 
   /** which missions to run 
    * These values can be set as parameters, when starting the mission */

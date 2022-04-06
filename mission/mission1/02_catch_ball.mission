@@ -1,6 +1,7 @@
 vel=0.0:time=0.5
 servo=2,pservo=600,vservo=0
 servo=3,pservo=820,vservo=0:time=1.5
+vel=0:time=1
 servo=2,pservo=-390,vservo=0
 servo=3,pservo=-140,vservo=0:time=1.0
 vel=0.0:time=0.5

@@ -22,11 +22,16 @@
 
 #include <sys/time.h>
 #include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
+#include <stdlib.h>
 
 #include "umission.h"
 #include "utime.h"
 #include "ulibpose2pose.h"
-#include "uloader.h"
+
 
 UMission::UMission(UBridge * regbot, UCamera * camera)
 {
@@ -363,9 +368,9 @@ void UMission::runMission()
  * \returns true, when finished. */
 bool UMission::mission1(int & state)
 {
-  ULoader loader;
   bool finished = false;
-  char lineBuffer_copy[missionLineMax][MAX_LEN];
+  // char lineBuffer_copy[missionLineMax][MAX_LEN];
+  // char * lines_copy[missionLineMax];
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
   switch (state)
@@ -380,18 +385,18 @@ bool UMission::mission1(int & state)
       break;
     case 1:
       if (bridge->joy->button[BUTTON_GREEN])
-        bridge->event->setEvent(2)
+        bridge->event->setEvent(2);
         state = 2;
       break;
     case 2:
       if(bridge->event->isEventSet(2)){
-        char * lines_copy = getLines;
-        int lineCount_copy = getLineCount;
-        loader->loadMission("01_pass_firstgate.mission", lines_copy, lineBuffer_copy, &lineCount_copy);
-        lines = setLines(lineBuffer_copy);
-        lineCount = setLineCount(lineCount_copy);
+        // int lineCount_copy = getLineCount;
+        // loader.loadMission("follow_line.txt", lines_copy, lineBuffer_copy, &lineCount_copy);
+        // loadMission("follow_line.mission", lines, lineBuffer, &lineCount);
+        // lines = setLines(lines_copy);
+        // lineCount = setLineCount(lineCount_copy);
         bridge->event->isEventSet(3);
-        sendAndActivateSnippet(lines, lineCount);
+        // sendAndActivateSnippet(lines, lineCount);
         state++;
       }
     case 10: // first PART - wait for IR2 then go fwd and turn
@@ -700,25 +705,45 @@ void UMission::closeLog()
   }
 }
 
-char * UMission::setLines(char lineContent[]){
-  int i = 0;
-  for (string line : lineContent){
-    strcpy(lineBuffer[i], line.c_str());
-    lines[i] = lineBuffer[i];
-    lineCount++;
-    i++;
-  }
-  return lines;
-}
+// char * UMission::setLines(char  ** lineContent){
+//   int i = 0;
+//   for (string line : lineContent){
+//     strcpy(lineBuffer[i], line.c_str());
+//     lines[i] = lineBuffer[i];
+//     i++;
+//   }
+//   return lines;
+// }
 
-char * UMission::getLines(void){
-  return lines;
-}
+// char * UMission::getLines(void){
+//   return lines;
+// }
 
-int UMission::getLineCount(){
-  return lineCount;
-}
+// int UMission::getLineCount(){
+//   return lineCount;
+// }
 
-int UMission::setLineCount(int count){
-  return lineCount = count;
+// int UMission::setLineCount(int count){
+//   return lineCount = count;
+// }
+
+void UMission::loadMission(string mission_name, char ** lines_copy, char lineBuffer_copy[][100],  int *lineCount)
+{
+    ifstream read_file;
+    read_file.open(mission_name.data(), ios::binary);
+    string line = "";
+    // cout << "count11:" << *lineCount << endl;
+    *lineCount = 0;
+    int i = 0;
+    while(getline(read_file, line))
+    {
+        //    cout<<"line:"<<line<<endl;
+        strcpy(lineBuffer_copy[i], line.c_str());
+        // cout << "line1:" << lineBuffer_copy[i] << endl;
+        lines_copy[i] = lineBuffer_copy[i];
+        i++;
+    }
+    *lineCount = i;
+    // int x = *lineCount;
+    // cout << "count11:" << x << endl;
 }

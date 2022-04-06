@@ -60,4 +60,12 @@ vel=0.35,tr=0.1:turn=-60
 vel=0.0:time=0.5
 
 
-    
+
+calibration
+label=1:time=0.5
+vel=0.4, tr=0.1:turn=90
+vel=0.5:dist=1
+goto=1:count=3
+vel=-0.4:dist=1
+servo=2,pservo=-390,vservo=0
+servo=3,pservo=-140,vservo=0:time=1.0
