@@ -27,9 +27,8 @@ public:
 
     ~ULoader();
 
-    loadMission(string mission_name, char *lines,
-    char lineBuffer, int *linecount);
-}
+    void loadMission(string mission_name, char *lines, char lineBuffer, int *linecount);
+};
 
 
 
