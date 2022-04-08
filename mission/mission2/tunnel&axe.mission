@@ -1,0 +1,32 @@
+thread=1
+	vel=0.4, acc=1:dist=0.35
+	tr=0:turn=-95
+	vel=0.4:dist=1.7
+	tr=0:turn=91
+	vel=0.4:dist=2.25
+	tr=0:turn=90
+	vel=0.4:dist=0.817
+	tr=0:turn=94
+	vel=0.4:dist=0.5
+	vel=0:time=0.5
+	vel=1.2,acc=2:dist=0.6
+	tr=0.175:turn=190
+	vel=0:time=0.5
+	vel=1.2,acc=2:dist=1
+	tr=0.20:turn=-188
+	vel=1.8,acc=2:dist=1.2
+	tr=0.58:turn=-190
+	vel=0:time=0.5
+	vel=1.55,acc=2:dist=0.3
+	tr=0.19:turn=-65
+	vel=0:time=0.5
+	vel=0.8,acc=1:dist=0.34
+	tr=0.19:turn=65
+	vel=0:time=1
+    vel=0.2,acc=1,edgel=-1,white=1:dist<0.5
+    vel=0.3,acc=1,edgel=-1,white=1:dist<4.5
+    vel=0:time=0.2
+    vel=0,edgel=0,white=1:ir2<0.3
+    vel=0,edgel=0,white=1:ir2>1
+    vel=1.5, acc=3.0,edgel=0.0, white=1: dist=2
+    vel=2.5, acc=3.0, edgel=0.0, white=1: dist=7.1
