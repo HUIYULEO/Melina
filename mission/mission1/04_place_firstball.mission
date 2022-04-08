@@ -17,7 +17,7 @@ vel=0.0:time=0.5
 vel=0.5, acc=2, edgel=0, white=1:dist=6
 
 
-get ball
+get ball on platform
 vel=0:time=0.5
 servo=2,pservo=600,vservo=0
 servo=3,pservo=820,vservo=0:time=1.0

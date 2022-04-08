@@ -402,7 +402,7 @@ bool UMission::mission1(int & state)
     case 10: // first PART - wait for IR2 then go fwd and turn
       snprintf(lines[0], MAX_LEN, "vel=0 : ir2 < 0.3");
       // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
-      snprintf(lines[1], MAX_LEN, "vel=0.2,acc=1:dist=0.6");
+      snprintf(lines[1], MAX_LEN, "vel=0.5,acc=1:dist=0.6");
       // stop and create an event when arrived at this line
       snprintf(lines[2], MAX_LEN, "event=1, vel=0");
       // add a line, so that the robot is occupied until next snippet has arrived
