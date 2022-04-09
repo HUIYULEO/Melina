@@ -69,3 +69,36 @@ goto=1:count=3
 vel=-0.4:dist=1
 servo=2,pservo=-390,vservo=0
 servo=3,pservo=-140,vservo=0:time=1.0
+
+first ball
+vel=0, log=10:time=0.2
+servo=2,pservo=600,vservo=0:time=1
+vel=0.6, acc=2, edgel=-0.5, white=1:dist=0.5
+vel=0.5, edgel=-0.5, white=1:xl>14
+vel=0.4, edgel=-1, white=1:dist=0.8
+vel=0.4, edgel=-1, white=1:xl>16
+vel=0.5,tr=0:turn=100
+vel=0.4:dist=0.14
+vel=0:time=0.5
+servo=2,pservo=-350,vservo=0:time=1
+vel=-0.4:dist=0.14
+vel=0,acc=4:time=0.5
+vel=0.5,acc=4,tr=0:turn=-98
+vel=0.3:dist=0.2
+vel=0.4,edgel=-0.5, white=1:dist=0.3
+vel=0.4,white=0:dist=0.20
+servo=2,pservo=-300,vservo=0:time=1
+vel=0.4,tr=0:turn=-50
+vel=0.4,tr=0:turn=60
+servo=2,pservo=600,vservo=0
+vel=0:time=0.5
+vel=0.5,tr=0:turn=170
+vel=0.3:lv>0
+vel=0.4, acc=2, edgel=-0.5, white=1:dist=1.5
+vel=0.3, acc=2, edger=0, white=1:xl>14
+vel=-0.3:time=1
+vel=0.4, white=0,tr=0:turn=-90
+vel=0.4, edgel=-1, white=1:dist=1.28
+vel=0:time=1
+servo=2,pservo=-390,vservo=0
+vel=0.0:time=0.5

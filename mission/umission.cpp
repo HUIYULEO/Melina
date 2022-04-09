@@ -22,6 +22,7 @@
 
 #include <sys/time.h>
 #include <cstdlib>
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -48,7 +49,8 @@ UMission::UMission(UBridge * regbot, UCamera * camera)
   // start mission thread
   th1 = new thread(runObj, this);
 //   play.say("What a nice day for a stroll\n", 100);
-//   sleep(5);
+  printf("Mission constructer\n");
+  sleep(5);
 }
 
 
@@ -62,7 +64,7 @@ void UMission::run()
 {
   while (not active and not th1stop)
     usleep(100000);
-//   printf("UMission::run:  active=%d, th1stop=%d\n", active, th1stop);
+  printf("UMission::run:  active=%d, th1stop=%d\n", active, th1stop);
   if (not th1stop)
     runMission();
   printf("UMission::run: mission thread ended\n");
@@ -229,6 +231,7 @@ void UMission::runMission()
       stop();
   }
   /// loop in sequence every mission until they report ended
+  printf("before the loop");
   while (not finished and not th1stop)
   { // stay in this mission loop until finished
     loop++;
@@ -264,13 +267,14 @@ void UMission::runMission()
           play.say("Mission resuming", 90);
           bridge->send("oled 3 running AUTO\n");
         }
+        // printf("start switch");
         switch(mission)
         {
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
           case 2:
-            ended = mission2(missionState);
+            ended = true; // mission2(missionState);
             break;
           case 3:
             ended = mission3(missionState);
@@ -379,28 +383,29 @@ bool UMission::mission1(int & state)
       // tell the operatior what to do
       printf("# press green to start.\n");
 //       system("espeak \"press green to start\" -ven+f4 -s130 -a5 2>/dev/null &");
-      play.say("Press green to start", 90);
+      // play.say("Press green to start", 90);
       bridge->send("oled 5 press green to start");
       state++;
       break;
     case 1:
       if (bridge->joy->button[BUTTON_GREEN])
-        bridge->event->setEvent(2);
         state = 2;
       break;
     case 2:
-      if(bridge->event->isEventSet(2)){
-        // int lineCount_copy = getLineCount;
-        // loader.loadMission("follow_line.txt", lines_copy, lineBuffer_copy, &lineCount_copy);
-        // loadMission("follow_line.mission", lines, lineBuffer, &lineCount);
-        // lines = setLines(lines_copy);
-        // lineCount = setLineCount(lineCount_copy);
-        bridge->event->isEventSet(3);
-        // sendAndActivateSnippet(lines, lineCount);
-        state++;
-      }
+      // int lineCount_copy = getLineCount;
+      // loader.loadMission("follow_line.txt", lines_copy, lineBuffer_copy, &lineCount_copy);
+      printf("# mission is starting.\n");
+      loadMission("follow_line.txt", lines, lineBuffer, &lineCount);
+      printf("%d", lineCount);
+      // lines = setLines(lines_copy);
+      // lineCount = setLineCount(lineCount_copy);
+      bridge->event->isEventSet(3);
+      sendAndActivateSnippet(lines, lineCount);
+      state = 10;
+      break;
+      
     case 10: // first PART - wait for IR2 then go fwd and turn
-      snprintf(lines[0], MAX_LEN, "vel=0 : ir2 < 0.3");
+      snprintf(lines[0], MAX_LEN, "vel=0 : time = 0.5");
       // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
       snprintf(lines[1], MAX_LEN, "vel=0.5,acc=1:dist=0.6");
       // stop and create an event when arrived at this line

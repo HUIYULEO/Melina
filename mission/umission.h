@@ -24,12 +24,14 @@
 
 #include <sys/time.h>
 #include <cstdlib>
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cstring>
 #include <stdlib.h>
 #include <opencv2/opencv.hpp>
+
 #include "urun.h"
 #include "ucamera.h"
 #include "ubridge.h"
@@ -96,7 +98,7 @@ public:
   void start()
   {
     active = true;
-    // printf("UMission::start active=true\n");
+    printf("UMission::start active=true\n");
   }
   /**
    * Stop all missions */

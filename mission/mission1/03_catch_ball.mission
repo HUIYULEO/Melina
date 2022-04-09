@@ -1,0 +1,20 @@
+vel=0, log=10:time=0.2
+servo=2,pservo=600,vservo=0
+vel=0.5, acc=2, edgel=0, white=1:dist=0.5
+vel=0.4, edgel=0, white=1:xl>16
+vel=-0.2:time=1
+vel=0.4, white=0,tr=0.12:turn=83
+vel=0.25, edgel=-1, white=1:dist=1.28
+vel=0:time=1
+servo=2,pservo=-390,vservo=0
+servo=3,pservo=-140,vservo=0:time=1.0
+vel=0.0:time=0.5
+
+get the second ball
+vel=0.4, white=0,tr=0:turn=-90
+vel=0.3, edgel=-1, white=1:dist=1.28
+vel=0:time=1
+servo=2,pservo=-390,vservo=0
+vel=0.0:time=0.5
+
+
