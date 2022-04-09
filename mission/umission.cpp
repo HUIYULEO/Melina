@@ -139,6 +139,7 @@ void UMission::sendAndActivateSnippet(char ** missionLines, int missionLineCnt)
   int startEvent = 31;
   // select Regbot thread to modify
   // and event to activate it
+    printf("send the command to robot");
   if (threadActive == 101)
   {
     threadToMod = 100;
@@ -395,46 +396,51 @@ bool UMission::mission1(int & state)
       // int lineCount_copy = getLineCount;
       // loader.loadMission("follow_line.txt", lines_copy, lineBuffer_copy, &lineCount_copy);
       printf("# mission is starting.\n");
-      loadMission("follow_line.txt", lines, lineBuffer, &lineCount);
-      printf("%d", lineCount);
+      loadMission("/home/local/mission/follow_line.txt");
+      printf("new_count:%d\n", lineCount);
       // lines = setLines(lines_copy);
       // lineCount = setLineCount(lineCount_copy);
+      printf(lines[0]);
+//      sendAndActivateSnippet(lines, lineCount);
       bridge->event->isEventSet(3);
-      sendAndActivateSnippet(lines, lineCount);
-      state = 10;
+      printf("# case=%d sent mission snippet 1\n", state);
+      state = 11;
       break;
       
     case 10: // first PART - wait for IR2 then go fwd and turn
-      snprintf(lines[0], MAX_LEN, "vel=0 : time = 0.5");
-      // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
-      snprintf(lines[1], MAX_LEN, "vel=0.5,acc=1:dist=0.6");
-      // stop and create an event when arrived at this line
-      snprintf(lines[2], MAX_LEN, "event=1, vel=0");
-      // add a line, so that the robot is occupied until next snippet has arrived
-      snprintf(lines[3], MAX_LEN, ": dist=1");
-      // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 4);
-      // make sure event 1 is cleared
-      bridge->event->isEventSet(1);
-      // tell the operator
-      printf("# case=%d sent mission snippet 1\n", state);
-//       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
-      play.say("Code snippet 1.", 90);
-      bridge->send("oled 5 code snippet 1");
-      //
-      // play as we go
-      play.setFile("../The_thing_goes_Bassim.mp3");
-      play.setVolume(5); // % (0..100)
-      play.start();
-      // go to wait for finished
-      state = 11;
-      featureCnt = 0;
+        if (bridge->event->isEventSet(3))
+        {
+            snprintf(lines[0], MAX_LEN, "vel=0 : time = 0.5");
+            // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
+            snprintf(lines[1], MAX_LEN, "vel=0.5,acc=1:dist=0.6");
+            // stop and create an event when arrived at this line
+            snprintf(lines[2], MAX_LEN, "event=1, vel=0");
+            // add a line, so that the robot is occupied until next snippet has arrived
+            snprintf(lines[3], MAX_LEN, ": dist=1");
+            // send the 4 lines to the REGBOT
+            sendAndActivateSnippet(lines, 4);
+            // make sure event 1 is cleared
+            bridge->event->isEventSet(1);
+            // tell the operator
+            printf("# case=%d sent mission snippet 1\n", state);
+//       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &");
+            play.say("Code snippet 1.", 90);
+            bridge->send("oled 5 code snippet 1");
+            //
+            // play as we go
+            play.setFile("../The_thing_goes_Bassim.mp3");
+            play.setVolume(5); // % (0..100)
+            play.start();
+            // go to wait for finished
+            state = 11;
+            featureCnt = 0;
+        }
       break;
     case 11:
       // wait for event 1 (send when finished driving first part)
-      if (bridge->event->isEventSet(1))
+      if (bridge->event->isEventSet(3))
       { // finished first drive
-        state = 999;
+          state = 999;
         play.stopPlaying();
       }
       break;
@@ -732,23 +738,32 @@ void UMission::closeLog()
 //   return lineCount = count;
 // }
 
-void UMission::loadMission(string mission_name, char ** lines_copy, char lineBuffer_copy[][100],  int *lineCount)
+void UMission::loadMission(string mission_name)
 {
-    ifstream read_file;
-    read_file.open(mission_name.data(), ios::binary);
-    string line = "";
-    // cout << "count11:" << *lineCount << endl;
-    *lineCount = 0;
+    ifstream mission_file;
+    printf(mission_name.data());
+    printf("\nspace\n");
+    mission_file.open(mission_name.data(), ios::in);
+    std::string line = "";
+//    *lineCount = 0;
     int i = 0;
-    while(getline(read_file, line))
+    int linenumber = 0;
+    while(std::getline(mission_file, line))
     {
-        //    cout<<"line:"<<line<<endl;
-        strcpy(lineBuffer_copy[i], line.c_str());
-        // cout << "line1:" << lineBuffer_copy[i] << endl;
-        lines_copy[i] = lineBuffer_copy[i];
+        printf(line.c_str());
+        printf("\n");
+//        strcpy(lineBuffer_copy[i], line.c_str());
+//        // cout << "line1:" << lineBuffer_copy[i] << endl;
+//        lines_copy[i] = lineBuffer_copy[i];
+        snprintf(lines[i], MAX_LEN, line.c_str());
+        printf("i: %d\n",i);
         i++;
+        linenumber++;
     }
-    *lineCount = i;
-    // int x = *lineCount;
-    // cout << "count11:" << x << endl;
+    lineCount = linenumber;
+    printf("linenumber: %d\n",lineCount);
+    printf("lines:");
+    printf(lines[3]);
+    sendAndActivateSnippet(lines, lineCount);
+//    *lineCount = linenumber;
 }

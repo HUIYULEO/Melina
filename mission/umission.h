@@ -120,7 +120,8 @@ public:
   // // char * getLines();
   // int getLineCount();
   // int setLineCount(int count);
-  void loadMission(string mission_name, char ** lines_copy, char lineBuffer_copy[][100],  int *lineCount);
+//  void loadMission(string mission_name,  int *lineCount);
+  void loadMission(string mission_name);
 
   /** which missions to run 
    * These values can be set as parameters, when starting the mission */
