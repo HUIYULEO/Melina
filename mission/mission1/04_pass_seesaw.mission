@@ -1,5 +1,4 @@
 vel=0, log=10:time=0.2
-
 servo=2,pservo=-320,vservo=0
 vel=0.3, edgel=-1 ,white=1:dist=1.0
 vel=0.3, white=0: dist=0.45

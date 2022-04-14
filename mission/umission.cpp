@@ -393,20 +393,46 @@ bool UMission::mission1(int & state)
         state = 2;
       break;
     case 2:
-      // int lineCount_copy = getLineCount;
-      // loader.loadMission("follow_line.txt", lines_copy, lineBuffer_copy, &lineCount_copy);
       printf("# mission is starting.\n");
-      loadMission("/home/local/mission/follow_line.txt");
-      printf("new_count:%d\n", lineCount);
-      // lines = setLines(lines_copy);
+      loadMission("/home/local/mission/mission1/011_pass_firstgate.txt");
       // lineCount = setLineCount(lineCount_copy);
-      printf(lines[0]);
-//      sendAndActivateSnippet(lines, lineCount);
-      bridge->event->isEventSet(3);
+      bridge->event->isEventSet(2);
       printf("# case=%d sent mission snippet 1\n", state);
-      state = 11;
+      state = 3;
       break;
-      
+    case 3:
+      // wait for event 2 (send when finished driving first part)
+      if (bridge->event->isEventSet(2))
+      { // finished first drive
+          loadMission("/home/local/mission/mission1/012_catch_ball.txt");
+          // lineCount = setLineCount(lineCount_copy);
+          bridge->event->isEventSet(3);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 4;
+      }
+      break;
+    case 4:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(3))
+      { // finished first drive
+          loadMission("/home/local/mission/mission1/013_pass_seesaw.txt");
+          // lineCount = setLineCount(lineCount_copy);
+          bridge->event->isEventSet(4);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 5;
+      }
+      break;
+    case 5:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(4))
+      { // finished first drive
+          loadMission("/home/local/mission/mission1/014_place_secondball.txt");
+          // lineCount = setLineCount(lineCount_copy);
+          bridge->event->isEventSet(5);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 11;
+      }
+      break;
     case 10: // first PART - wait for IR2 then go fwd and turn
         if (bridge->event->isEventSet(3))
         {
@@ -438,7 +464,7 @@ bool UMission::mission1(int & state)
       break;
     case 11:
       // wait for event 1 (send when finished driving first part)
-      if (bridge->event->isEventSet(3))
+      if (bridge->event->isEventSet(5))
       { // finished first drive
           state = 999;
         play.stopPlaying();
