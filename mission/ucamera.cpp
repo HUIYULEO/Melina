@@ -88,17 +88,17 @@ bool UCamera::setupCamera()
   io = IO_METHOD_MMAP; // use (4) memory mapped buffers 
   //   w = 2592;
   //   h = 1944;
-  //
-  //   w = 1920;
-  //   h = 1080;
-  //
+
+     w = 1920;
+     h = 1080;
+
   // w = 1296;
   // h = 972;
   //
-  w = 640;
-  h = 480;
-  //pixelFormat = V4L2_PIX_FMT_YUYV;
-  pixelFormat = V4L2_PIX_FMT_SBGGR10;  // (BG10) Bayer coded 10bit per colour plane
+//  w = 640;
+//  h = 480;
+  pixelFormat = V4L2_PIX_FMT_YUYV;
+//  pixelFormat = V4L2_PIX_FMT_SBGGR10;  // (BG10) Bayer coded 10bit per colour plane
   //pixelFormat = V4L2_PIX_FMT_SBGGR10P;
   //pixelFormat = V4L2_PIX_FMT_SBGGR8;
   // pixelFormat = V4L2_PIX_FMT_RGB24;

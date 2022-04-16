@@ -390,7 +390,7 @@ bool UMission::mission1(int & state)
       break;
     case 1:
       if (bridge->joy->button[BUTTON_GREEN])
-        state = 2;
+        state = 999;
       break;
     case 2:
       printf("# mission is starting.\n");
@@ -673,6 +673,43 @@ bool UMission::mission3(int & state)
   bool finished = false;
   switch (state)
   {
+    case 0:
+      printf("# mission is starting.\n");
+      loadMission("/home/local/mission/mission2/01_go_to_tunnel.txt");
+      bridge->event->isEventSet(1);
+      printf("# case=%d sent mission snippet 1\n", state);
+      state = 1;
+      break;
+    case 1:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+          loadMission("/home/local/mission/mission2/02_pass_tunnel.txt");
+          bridge->event->isEventSet(2);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 2;
+      }
+      break;
+    case 2:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(2))
+      { // finished first drive
+          loadMission("/home/local/mission/mission2/03_close_tunnel.txt");
+          bridge->event->isEventSet(3);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 3;
+      }
+      break;
+    case 3:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(3))
+      { // finished first drive
+          loadMission("/home/local/mission/mission2/04axe.txt");
+          bridge->event->isEventSet(4);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 999;
+      }
+      break;
     case 999:
     default:
       printf("mission 3 ended\n");
@@ -793,3 +830,4 @@ void UMission::loadMission(string mission_name)
     sendAndActivateSnippet(lines, lineCount);
 //    *lineCount = linenumber;
 }
+

@@ -225,7 +225,7 @@ int main ( int argc,char **argv )
 
     UCamera cam(&bridge);
     // start camera setup and capture
-    cam.start();
+//    cam.start();
     // create mission control
     UMission mission(&bridge, &cam);
     // set mission range (default is 1..988 (all))
