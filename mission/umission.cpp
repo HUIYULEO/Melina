@@ -278,7 +278,7 @@ void UMission::runMission()
             ended = true; // mission2(missionState);
             break;
           case 3:
-            ended = mission3(missionState);
+            ended = true; //mission3(missionState);
             break;
           case 4:
             ended = mission4(missionState);
@@ -390,7 +390,7 @@ bool UMission::mission1(int & state)
       break;
     case 1:
       if (bridge->joy->button[BUTTON_GREEN])
-        state = 999;
+        state = 2;
       break;
     case 2:
       printf("# mission is starting.\n");
@@ -415,11 +415,11 @@ bool UMission::mission1(int & state)
       // wait for event 3 (send when finished driving first part)
       if (bridge->event->isEventSet(3))
       { // finished first drive
-          loadMission("/home/local/mission/mission1/013_pass_seesaw.txt");
+          loadMission("/home/local/mission/mission1/0131_pass_seesaw.txt");
           // lineCount = setLineCount(lineCount_copy);
           bridge->event->isEventSet(4);
           printf("# case=%d sent mission snippet 1\n", state);
-          state = 5;
+          state = 11;
       }
       break;
     case 5:

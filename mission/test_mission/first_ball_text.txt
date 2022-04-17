@@ -55,3 +55,25 @@ vel=0.4, edgel=-1, white=1:dist=1.28
 vel=0:time=1
 servo=2,pservo=-390,vservo=0
 vel=0.0:time=0.5
+
+put ball
+servo=2,pservo=-330,vservo=0:time=1
+vel=0.4:dist=0.8
+vel=0.4:xl>12
+vel=0:time=0.5
+tr=0.05,vel=0.4:turn=-88
+vel=0.4,edgel=-0.5, white=1: dist=0.3
+servo=2,pservo=-340,vservo=0:time=1
+vel=0.6,edgel=-0.5, white=1: dist=2.0
+servo=2,pservo=-400,vservo=0:time=1
+vel=0.4,edgel=-0.5, white=1:dist=0.4
+vel=0.4,white=0:dist=0.2
+vel=0:time=1
+servo=2,pservo=-290,vservo=0:time=1
+vel=0.25,tr=0:turn=35
+label=1
+servo=2,pservo=-280,vservo=0:time=1
+vel=0.25,tr=0:turn=-20
+vel=0.25,tr=0:turn=25
+goto=1:count=1
+vel=0
