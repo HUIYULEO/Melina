@@ -1,11 +1,12 @@
-vel=0:time=1
-vel=0.2,acc=1:lv>0
-vel=0.3,acc=1,edgel=-1,white=1:dist<4.5
+vel=0.3,white=0:dist=0.55
+vel=0.4,tr=0:turn=-85
+vel=0.3,acc=1:lv>0
+vel=0.3:dist=0.2
+vel=0.4,acc=1,edgel=-0.5,white=1:dist<2.5
 vel=0:time=0.2
-vel=0.4,acc=2,edgel=0,white=1:dist=1
-vel=0,edgel=0,white=1:ir2<0.3
-vel=0,edgel=0,white=1:ir2>1
-vel=1.5, acc=3.0,edgel=0.0, white=1: dist=2
-vel=2.5, acc=3.0, edgel=0.0, white=1: dist=7.1
-vel=0.0
-
+vel=0,edgel=-0.5,white=1:ir2<0.3
+vel=0,edgel=-0.5,white=1:ir2>1
+vel=1.5, acc=3.0,edgel=-0.5, white=1: dist=2
+vel=1.5, acc=3.0, edgel=-0.5, white=1: dist=6.6
+event=3,vel=0:time=0.5
+:dist=1

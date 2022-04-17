@@ -272,7 +272,7 @@ void UMission::runMission()
         switch(mission)
         {
           case 1: // running auto mission
-            ended = mission1(missionState);
+            ended = true;//mission1(missionState);
             break;
           case 2:
             ended = true; // mission2(missionState);
@@ -419,7 +419,7 @@ bool UMission::mission1(int & state)
           // lineCount = setLineCount(lineCount_copy);
           bridge->event->isEventSet(4);
           printf("# case=%d sent mission snippet 1\n", state);
-          state = 11;
+          state = 5;
       }
       break;
     case 5:
@@ -430,12 +430,34 @@ bool UMission::mission1(int & state)
           // lineCount = setLineCount(lineCount_copy);
           bridge->event->isEventSet(5);
           printf("# case=%d sent mission snippet 1\n", state);
+          state = 6;
+      }
+      break;
+    case 6:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(5))
+      { // finished first drive
+          loadMission("/home/local/mission/mission1/015_place_secondball.txt");
+          // lineCount = setLineCount(lineCount_copy);
+          bridge->event->isEventSet(6);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 7;
+      }
+      break;
+    case 7:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(6))
+      { // finished first drive
+          loadMission("/home/local/mission/mission1/016_go_to_zoom.txt");
+          // lineCount = setLineCount(lineCount_copy);
+          bridge->event->isEventSet(7);
+          printf("# case=%d sent mission snippet 1\n", state);
           state = 11;
       }
       break;
     case 11:
       // wait for event 1 (send when finished driving first part)
-      if (bridge->event->isEventSet(5))
+      if (bridge->event->isEventSet(7))
       { // finished first drive
           state = 999;
         play.stopPlaying();
@@ -645,7 +667,7 @@ bool UMission::mission3(int & state)
   switch (state)
   {
     case 0:
-      printf("# mission is starting.\n");
+      printf("# mission 2 is starting.\n");
       loadMission("/home/local/mission/mission2/01_go_to_tunnel.txt");
       bridge->event->isEventSet(1);
       printf("# case=%d sent mission snippet 1\n", state);
@@ -675,8 +697,16 @@ bool UMission::mission3(int & state)
       // wait for event 3 (send when finished driving first part)
       if (bridge->event->isEventSet(3))
       { // finished first drive
-          loadMission("/home/local/mission/mission2/04axe.txt");
+          loadMission("/home/local/mission/mission2/04_axe.txt");
           bridge->event->isEventSet(4);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 4;
+      }
+      break;
+    case 4:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(4))
+      { // finished first drive
           printf("# case=%d sent mission snippet 1\n", state);
           state = 999;
       }
@@ -703,6 +733,41 @@ bool UMission::mission4(int & state)
   bool finished = false;
   switch (state)
   {
+    case 0:
+      printf("# mission 4 is starting.\n");
+      loadMission("/home/local/mission/mission4/01_turnback.txt");
+      bridge->event->isEventSet(1);
+      printf("# case=%d sent mission snippet 1\n", state);
+      state = 1;
+      break;
+    case 1:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+          loadMission("/home/local/mission/mission4/02_passthreedoors.txt");
+          bridge->event->isEventSet(2);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 2;
+      }
+      break;
+    case 2:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(2))
+      { // finished first drive
+          loadMission("/home/local/mission/mission4/03_hitthealarm.txt");
+          bridge->event->isEventSet(3);
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 3;
+      }
+      break;
+    case 3:
+      // wait for event 3 (send when finished driving first part)
+      if (bridge->event->isEventSet(3))
+      { // finished first drive
+          printf("# case=%d sent mission snippet 1\n", state);
+          state = 999;
+      }
+      break;
     case 999:
     default:
       printf("mission 4 ended\n");

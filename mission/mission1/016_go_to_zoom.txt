@@ -1,0 +1,14 @@
+vel=0,servo=2,pservo=700,vservo=0:time=1
+vel=0.4,tr=0:turn=70
+vel=0.3:lv>0
+vel=0:time=1
+vel=0.3,edgel=-0.5, white=1: dist=0.5
+vel=0.4,edgel=-0.5, white=1: dist=2.4
+vel=0:time=1
+vel=0.4,tr=0:turn=85
+vel=0.4,white=0:dist=0.2
+vel=0.4:lv>0
+vel=0.4,tr=0:turn=-85
+vel=0.3,edgel=-0.5, white=1:dist=1
+event=7,vel=0:time=1
+:dist=1
