@@ -278,7 +278,7 @@ void UMission::runMission()
             ended = true; // mission2(missionState);
             break;
           case 3:
-            ended = true; //mission3(missionState);
+            ended = mission3(missionState);
             break;
           case 4:
             ended = mission4(missionState);

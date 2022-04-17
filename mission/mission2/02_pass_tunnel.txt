@@ -13,6 +13,6 @@ vel=0:time=0.5
 vel=0.4,acc=2,tr=0:turn=-88
 vel=-0.4:time=3
 vel=0.3:dist=0.18
-vel=0.4,acc=2,tr=0:turn=88
+vel=0.4,acc=2,tr=0:turn=85
 event=2,vel=0:time=0.5
 :dist=1
