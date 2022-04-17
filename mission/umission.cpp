@@ -426,41 +426,12 @@ bool UMission::mission1(int & state)
       // wait for event 3 (send when finished driving first part)
       if (bridge->event->isEventSet(4))
       { // finished first drive
-          loadMission("/home/local/mission/mission1/014_place_secondball.txt");
+          loadMission("/home/local/mission/mission1/014_place_firstball.txt");
           // lineCount = setLineCount(lineCount_copy);
           bridge->event->isEventSet(5);
           printf("# case=%d sent mission snippet 1\n", state);
           state = 11;
       }
-      break;
-    case 10: // first PART - wait for IR2 then go fwd and turn
-        if (bridge->event->isEventSet(3))
-        {
-            snprintf(lines[0], MAX_LEN, "vel=0 : time = 0.5");
-            // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
-            snprintf(lines[1], MAX_LEN, "vel=0.5,acc=1:dist=0.6");
-            // stop and create an event when arrived at this line
-            snprintf(lines[2], MAX_LEN, "event=1, vel=0");
-            // add a line, so that the robot is occupied until next snippet has arrived
-            snprintf(lines[3], MAX_LEN, ": dist=1");
-            // send the 4 lines to the REGBOT
-            sendAndActivateSnippet(lines, 4);
-            // make sure event 1 is cleared
-            bridge->event->isEventSet(1);
-            // tell the operator
-            printf("# case=%d sent mission snippet 1\n", state);
-//       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &");
-            play.say("Code snippet 1.", 90);
-            bridge->send("oled 5 code snippet 1");
-            //
-            // play as we go
-            play.setFile("../The_thing_goes_Bassim.mp3");
-            play.setVolume(5); // % (0..100)
-            play.start();
-            // go to wait for finished
-            state = 11;
-            featureCnt = 0;
-        }
       break;
     case 11:
       // wait for event 1 (send when finished driving first part)
