@@ -272,15 +272,18 @@ void UMission::runMission()
         switch(mission)
         {
           case 1: // running auto mission
-            ended = true;//mission1(missionState);
+//            ended = true;
+            ended = mission1(missionState);
             break;
           case 2:
             ended = true; // mission2(missionState);
             break;
           case 3:
+//            ended = true;
             ended = mission3(missionState);
             break;
           case 4:
+//            ended = true;
             ended = mission4(missionState);
             break;
           default:
@@ -466,6 +469,7 @@ bool UMission::mission1(int & state)
     case 999:
     default:
       printf("mission 1 ended \n");
+      play.say("mission 1 finished.\n", 100);
       bridge->send("oled 5 \"mission 1 ended.\"");
       finished = true;
       break;
@@ -714,6 +718,7 @@ bool UMission::mission3(int & state)
     case 999:
     default:
       printf("mission 3 ended\n");
+      play.say("mission 3 finished.\n", 100);
       bridge->send("oled 5 mission 3 ended.");
       finished = true;
       break;
@@ -765,12 +770,13 @@ bool UMission::mission4(int & state)
       if (bridge->event->isEventSet(3))
       { // finished first drive
           printf("# case=%d sent mission snippet 1\n", state);
+          play.say("mission 4 finished.\n", 100);
           state = 999;
       }
       break;
     case 999:
     default:
-      printf("mission 4 ended\n");
+      play.say("we done it.\n", 100);
       bridge->send("oled 5 mission 4 ended.");
       finished = true;
       break;

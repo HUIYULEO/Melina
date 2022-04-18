@@ -1,14 +1,15 @@
 vel=0:time=1
 vel=0:ir2<0.7
-vel=0.0:time=4
+vel=0.0:time=3
 tr=0,vel=0.4, white=0:turn=40
-vel=0.5,acc=3, white=0:dist=0.7
+vel=0.5,acc=2, white=0:dist=0.7
 vel=0,servo=2,pservo=-550,vservo=0:time=1
-vel=0.6,acc=3:dist=0.25
-vel=0,servo=2,pservo=500,vservo=0:time=1
+vel=0.6,acc=3:dist=0.3
+vel=0,servo=2,pservo=700,vservo=0:time=1
 vel=0:time=1
-vel=0.3,tr=0.1:turn=50
-vel=0.3,acc=1,tr=0.45:turn=-180
-vel=0.3,tr=0.45:turn=-150
+vel=0.3,tr=0.1:turn=42
+vel=0.3:dist=0.1
+vel=0.4,acc=1,tr=0.46:turn=-160
+vel=0.4,tr=0.45:turn=-120
 event=2,vel=0:time=0.5
 :dist=1

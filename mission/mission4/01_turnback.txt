@@ -4,8 +4,8 @@ vel=0.3,acc=1,edgel=-0.5,white=1:dist=1
 vel=0.5,acc=1,edgel=-0.5,white=1:dist=1.5
 vel=0.4, edgel=-0.5, white=1:xl>16
 vel=-0.3:time=1
-vel=0.4, tr=0:turn=95
+vel=0.4, tr=0:turn=89
 vel=0.3:dist=0.1
-vel=0.3, edgel=-0.5, white=1:dist=0.25
+vel=0.2, edgel=-0.5, white=1:dist=0.25
 event=1,vel=0:time=0.5
 :dist=1

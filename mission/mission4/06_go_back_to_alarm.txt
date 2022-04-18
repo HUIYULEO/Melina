@@ -1,0 +1,12 @@
+vel=0,servo=2,pservo=-290,vservo=0:time=1
+vel=0.4:dist=2.3
+vel=-0.3:dist=0.5
+vel=0.4,tr=0:turn=-88
+vel=-0.3:time=5
+vel=0.3,acc=1:dist=0.5
+vel=0.4,tr=0:turn=-88
+vel=0.4:dist=2.0
+vel=0.3,acc=1:lv>0
+vel=0.4,edger=-0.5,white=1:dist=0.5
+event=5,vel=0:time=0.5
+:dist=1
