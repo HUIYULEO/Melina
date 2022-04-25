@@ -1,4 +1,4 @@
-vel=0.3,dist=0.4
+vel=0.3:dist=0.13
 vel=0.4,tr=0:turn=85
 vel=-0.4:time=4
 vel=0.3,white=0:dist=0.5

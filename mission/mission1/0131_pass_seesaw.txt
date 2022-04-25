@@ -6,7 +6,7 @@ vel=0.4: lv>0
 vel=0:time=0.5
 tr=0.05,vel=0.4:turn=-86
 vel=0.4,edgel=-0.5, white=1: dist=0.5
-servo=2,pservo=-330,vservo=0:time=1
+servo=2,pservo=-332,vservo=0:time=1
 vel=0.6,edgel=-0.5, white=1: dist=2.0
 servo=2,pservo=-400,vservo=0:time=1
 vel=0.4,edgel=-0.5, white=1:dist=0.3
