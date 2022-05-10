@@ -378,8 +378,6 @@ void UMission::runMission()
 bool UMission::mission1(int & state)
 {
     bool finished = false;
-    // char lineBuffer_copy[missionLineMax][MAX_LEN];
-    // char * lines_copy[missionLineMax];
     // First commands to send to robobot in given mission
     // (robot sends event 1 after driving 1 meter)):
     switch (state)
@@ -410,7 +408,6 @@ bool UMission::mission1(int & state)
             if (bridge->event->isEventSet(2))
             { // finished first drive
                 loadMission("/home/local/mission/mission1/012_catch_ball.txt");
-                // lineCount = setLineCount(lineCount_copy);
                 play.say("Get the ball \n", 100);
                 bridge->event->isEventSet(3);
                 printf("# case=%d sent mission snippet 1\n", state);
@@ -418,11 +415,9 @@ bool UMission::mission1(int & state)
             }
             break;
         case 4:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(3))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission1/0131_pass_seesaw.txt");
-                // lineCount = setLineCount(lineCount_copy);
                 bridge->event->isEventSet(4);
                 play.say("Dangerious! Dangerious!\n", 100);
                 printf("# case=%d sent mission snippet 1\n", state);
@@ -430,23 +425,19 @@ bool UMission::mission1(int & state)
             }
             break;
         case 5:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(4))
-            { // finished first drive
+            {
                 play.say("Please in the hole!\n", 100);
                 loadMission("/home/local/mission/mission1/014_place_firstball.txt");
-                // lineCount = setLineCount(lineCount_copy);
                 bridge->event->isEventSet(5);
                 printf("# case=%d sent mission snippet 1\n", state);
                 state = 6;
             }
             break;
         case 6:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(5))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission1/015_place_secondball.txt");
-                // lineCount = setLineCount(lineCount_copy);
                 play.say("Oh, the hole!\n", 100);
                 bridge->event->isEventSet(6);
                 printf("# case=%d sent mission snippet 1\n", state);
@@ -454,11 +445,9 @@ bool UMission::mission1(int & state)
             }
             break;
         case 7:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(6))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission1/016_go_to_zoom.txt");
-                // lineCount = setLineCount(lineCount_copy);
                 play.say("See you!\n", 100);
                 bridge->event->isEventSet(7);
                 printf("# case=%d sent mission snippet 1\n", state);
@@ -466,9 +455,8 @@ bool UMission::mission1(int & state)
             }
             break;
         case 11:
-            // wait for event 1 (send when finished driving first part)
             if (bridge->event->isEventSet(7))
-            { // finished first drive
+            {
                 state = 999;
                 play.stopPlaying();
             }
@@ -665,13 +653,13 @@ bool UMission::mission2(int & state)
             break;
         case 999:
         default:
-            printf("mission 1 ended \n");
-            bridge->send("oled 5 \"mission 1 ended.\"");
+            printf("mission 2 ended \n");
+            bridge->send("oled 5 \"mission 2 ended.\"");
             finished = true;
             play.stopPlaying();
             break;
     }
-    // printf("# mission1 return (state=%d, finished=%d, )\n", state, finished);
+        printf("# mission2 return (state=%d, finished=%d, )\n", state, finished);
     return finished;
 }
 
@@ -696,9 +684,8 @@ bool UMission::mission3(int & state)
             state = 1;
             break;
         case 1:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(1))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission2/02_pass_tunnel.txt");
                 bridge->event->isEventSet(2);
                 play.say("oh, tunnel!\n", 100);
@@ -707,9 +694,8 @@ bool UMission::mission3(int & state)
             }
             break;
         case 2:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(2))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission2/03_close_tunnel.txt");
                 bridge->event->isEventSet(3);
                 printf("# case=%d sent mission snippet 1\n", state);
@@ -717,9 +703,8 @@ bool UMission::mission3(int & state)
             }
             break;
         case 3:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(3))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission2/04_axe.txt");
                 play.say("Faster!Faster!\n", 100);
                 bridge->event->isEventSet(4);
@@ -728,9 +713,8 @@ bool UMission::mission3(int & state)
             }
             break;
         case 4:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(4))
-            { // finished first drive
+            {
                 printf("# case=%d sent mission snippet 1\n", state);
                 state = 999;
             }
@@ -766,9 +750,8 @@ bool UMission::mission4(int & state)
             state = 1;
             break;
         case 1:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(1))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission4/02_passthreedoors.txt");
                 bridge->event->isEventSet(2);
                 printf("# case=%d sent mission snippet 1\n", state);
@@ -776,9 +759,8 @@ bool UMission::mission4(int & state)
             }
             break;
         case 2:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(2))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission4/04_go_to_tree.txt");
                 bridge->event->isEventSet(3);
                 printf("# case=%d sent mission snippet 1\n", state);
@@ -786,9 +768,8 @@ bool UMission::mission4(int & state)
             }
             break;
         case 3:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(3))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission4/05_push_the_tree.txt");
                 play.say("keep the ball, please!\n", 100);
                 bridge->event->isEventSet(4);
@@ -797,9 +778,8 @@ bool UMission::mission4(int & state)
             }
             break;
         case 4:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(4))
-            { // finished first drive
+            {
                 loadMission("/home/local/mission/mission4/06_go_back_to_alarm.txt");
                 play.say("Good job, Melina!\n", 100);
                 bridge->event->isEventSet(5);
@@ -808,9 +788,8 @@ bool UMission::mission4(int & state)
             }
             break;
         case 5:
-            // wait for event 3 (send when finished driving first part)
             if (bridge->event->isEventSet(5))
-            { // finished first drive
+            {
                 printf("# case=%d sent mission snippet 1\n", state);
                 play.say("mission 4 finished.\n", 100);
                 play.say("Good job, Melina!\n", 100);
@@ -866,29 +845,13 @@ void UMission::closeLog()
     }
 }
 
-// char * UMission::setLines(char  ** lineContent){
-//   int i = 0;
-//   for (string line : lineContent){
-//     strcpy(lineBuffer[i], line.c_str());
-//     lines[i] = lineBuffer[i];
-//     i++;
-//   }
-//   return lines;
-// }
-
-// char * UMission::getLines(void){
-//   return lines;
-// }
-
-// int UMission::getLineCount(){
-//   return lineCount;
-// }
-
-// int UMission::setLineCount(int count){
-//   return lineCount = count;
-// }
-
+/**
+ * Author:Huiyu
+ * @param mission_name
+ * This function is used to read the mission files and send the command to robot.
+ */
 void UMission::loadMission(string mission_name)
+
 {
     ifstream mission_file;
     printf(mission_name.data());
