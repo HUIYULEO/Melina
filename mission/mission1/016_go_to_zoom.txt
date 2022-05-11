@@ -1,5 +1,5 @@
 vel=0,servo=2,pservo=700,vservo=0:time=1
-vel=0.4,tr=0:turn=70
+vel=0.4,tr=0:turn=78
 vel=0.3:dist=0.45
 vel=0:time=1
 vel=0.3,edgel=-0.5, white=1: dist=0.4
